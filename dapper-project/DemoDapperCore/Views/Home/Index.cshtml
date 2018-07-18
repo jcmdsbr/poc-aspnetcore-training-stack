@@ -1,0 +1,67 @@
+﻿@model IEnumerable<DemoDapperCore.Models.CarroViewModel>
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Consultar Carros";
+}
+<br/>
+<div class="container">
+    <fieldset>
+        <legend> Carros </legend>
+        <table class="table">
+            <thead>
+                <tr>
+
+                    <th>
+                        @Html.DisplayNameFor(model => model.Fabricante)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Modelo)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.AnoFabricacao)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ProprietarioCustomizado)
+                    </th>
+                    <th>
+                        Ações
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+            {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Fabricante)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Modelo)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.AnoFabricacao)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ProprietarioCustomizado)
+                        </td>
+
+                        <td>
+                            <a asp-controller="Home" asp-action="Detalhar" asp-route-codigo="@item.Codigo" title="Detalhar">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </a>
+                            <a asp-controller="Home" asp-action="Novo" asp-route-codigo="@item.Codigo" title="Editar">
+                                <span class="glyphicon glyphicon-edit"></span>
+                            </a>
+                            <a asp-controller="Home" asp-action="Excluir" asp-route-codigo="@item.Codigo" title="Excluir">
+                                <span class="glyphicon glyphicon-remove-sign"></span>
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </fieldset> 
+    <a asp-controller="Home" asp-action="Novo" title="Cadastrar novo carro" class="btn btn-info"> Cadastrar novo carro
+    </a>
+</div>

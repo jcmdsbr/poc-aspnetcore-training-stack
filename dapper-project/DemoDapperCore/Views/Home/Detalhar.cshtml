@@ -1,0 +1,24 @@
+﻿@model DemoDapperCore.Models.CarroViewModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<hr/>
+<div class="container">
+    <fieldset>
+        <legend>@Model.Modelo</legend>
+        <p>
+            <label asp-for="AnoFabricacao"></label>:
+            @Html.DisplayFor(x => x.AnoFabricacao)
+        </p>
+
+        <p>
+            <label asp-for="Fabricante"></label>:
+            @Html.DisplayFor(x => x.Fabricante)
+        </p>
+
+        <div>
+            <a asp-controller="Home" asp-action="Index" title="Voltar"><span class="glyphicon glyphicon-arrow-left"></span></a>
+        </div>
+    </fieldset>
+</div>

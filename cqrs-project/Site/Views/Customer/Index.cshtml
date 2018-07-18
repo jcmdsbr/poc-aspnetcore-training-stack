@@ -1,0 +1,41 @@
+﻿@model IEnumerable<Domain.Entities.Models.Customer>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BirthDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cpf)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BirthDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email.Description)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cpf.GetValue)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a class="btn btn-info" asp-action="Create">Create New</a>

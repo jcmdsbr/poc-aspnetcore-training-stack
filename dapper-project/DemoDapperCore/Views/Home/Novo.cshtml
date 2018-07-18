@@ -1,0 +1,43 @@
+﻿@model DemoDapperCore.Models.CarroViewModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    ViewData["Title"] = Model.Codigo > 0 ? "Atualizar" : "Inserir";
+    var legenda = ViewData["Title"] + " Carro";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<hr />
+<div class="container">
+    <fieldset>
+        <legend><h4>@legenda</h4></legend>
+        <div class="row">
+            <div class="col-md-4">
+                <form asp-action="Novo">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    @Html.HiddenFor(x=>x.Codigo)
+                    <div class="form-group">
+                        <label asp-for="Fabricante" class="control-label"></label>
+                        <input asp-for="Fabricante" class="form-control" />
+                        <span asp-validation-for="Fabricante" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Modelo" class="control-label"></label>
+                        <input asp-for="Modelo" class="form-control" />
+                        <span asp-validation-for="Modelo" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="AnoFabricacao" class="control-label"></label>
+                        <input asp-for="AnoFabricacao" class="form-control" maxlength="4" />
+                        <span asp-validation-for="AnoFabricacao" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-info">  <span class="glyphicon glyphicon-floppy-saved"> Salvar </span></button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div>
+            <a asp-controller="Home" asp-action="Index" title="Voltar" class="btn btn-warning"><span class="glyphicon glyphicon-arrow-left"></span> Voltar </a>
+        </div>
+    </fieldset>
+</div>
+@{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

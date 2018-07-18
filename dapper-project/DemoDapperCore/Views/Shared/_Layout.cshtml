@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+    <title>@ViewData["Title"]</title>
+</head>
+<body>
+<div>
+    @RenderBody()
+</div>
+
+<script type="text/javascript">
+    var mensagemSucesso = "@Html.Raw(TempData["mensagemSucesso"])";
+
+    if (mensagemSucesso) {
+        alert(mensagemSucesso);
+    }
+    
+</script>
+
+</body>
+</html>
